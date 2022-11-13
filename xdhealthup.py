@@ -52,7 +52,7 @@ opts=getopt(argv[1:],"hu:p:l:d",["help","username=","password=","location=","deb
 
 USERNAME,PASSWORD,LOCATION,DEBUG="","",1,False
 
-helpMsg="""Xddailyup - 西安电子科技大学健康卡自动上报工具 1.5 (2022 Nov 5, Pairman)
+helpMsg="""Xddailyup - 西安电子科技大学健康卡自动上报工具 1.6 (2022 Nov 13, Pairman)
 本程序仅供学习交流使用，使用本程序造成的任何后果由用户自行负责。
 用法：
     python3 %s [参数]
@@ -375,13 +375,13 @@ while True:
         print("今天是%s年%s月%s日"%(str(currentTime)[0:4],str(currentTime)[5:7],str(currentTime)[8:10]))
         healthUp()
     # 其他时刻暂停上报
-    elif timeDiff>300:
-        timeDiff-=300
+    elif timeDiff>60:
+        timeDiff-=60
         sleep(timeDiff)
     elif timeDiff<0:
         upMinute=randint(10,50)
         print("更新健康卡上报时间成功！下一天上报的时间为:%02d时%02d分"%(upHour,upMinute))
-        timeDiff=86100+3600*upHour+60*upMinute-3600*currentHour-60*currentMinute
+        timeDiff=86340+3600*upHour+60*upMinute-3600*currentHour-60*currentMinute
         sleep(timeDiff)
     else:
-        sleep(50)
+        sleep(55)
